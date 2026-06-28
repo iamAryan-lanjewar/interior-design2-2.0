@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residential Design | HK Interior Designs</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        .story-section {
+            padding: var(--section-pad-y) 0;
+            background-color: var(--clr-bg-light);
+        }
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            margin-bottom: 64px;
+        }
+        .story-grid:nth-child(even) {
+            direction: rtl;
+        }
+        .story-grid:nth-child(even) .story-content {
+            direction: ltr;
+        }
+        .story-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+        }
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .story-content {
+            padding: 24px;
+        }
+        .story-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 24px;
+            color: var(--clr-accent);
+        }
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--clr-text-muted);
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="layout-wrapper">
+    <!-- Top Nav -->
+    <nav class="top-nav-new" style="position: relative; background-color: var(--clr-primary-dark); padding: 20px 5%;">
+        <ul>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn-enquiry" style="border-color: rgba(255,255,255,0.2);">Enquiry &rarr;</a>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Title -->
+        <section style="background-color: var(--clr-primary-dark); color: var(--clr-text-light); padding: 80px 24px; text-align: center;">
+            <span class="section-over-title text-light" style="color: var(--clr-accent)!important;">RESIDENTIAL SPACES</span>
+            <h1 style="font-size: 3.5rem; color: var(--clr-text-light); margin-top: 16px;">A Symphony of Living</h1>
+        </section>
+
+        <!-- Narrative Section -->
+        <section class="story-section">
+            <div class="container">
+                
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="images/residential/3988673d-28e6-44ed-92f6-a970b7c38e7d.png" alt="Residential Interior 1">
+                    </div>
+                    <div class="story-content">
+                        <h3>The Awakening of Space</h3>
+                        <p>It begins with an empty room, a silent canvas waiting to breathe. We don't just place furniture; we invite light to dance across textured walls and find harmony in the shadows. Every hue chosen is a whisper of morning calm, turning a mere house into a living entity that greets you when you return.</p>
+                    </div>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="images/residential/4da69396-a59b-4198-87ac-181dd7f4883a.png" alt="Residential Interior 2">
+                    </div>
+                    <div class="story-content">
+                        <h3>Textures that Tell Tales</h3>
+                        <p>Run your fingers along the rich fabrics and the grain of natural wood. The contrast of sleek metal against warm upholstery is not just design—it's dialogue. This is where modern elegance shakes hands with timeless comfort, creating a nest that feels universally beautiful yet intimately yours.</p>
+                    </div>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="images/residential/85343e08-9230-43e6-b547-66889be3630d.png" alt="Residential Interior 3">
+                    </div>
+                    <div class="story-content">
+                        <h3>The Heartbeat of Home</h3>
+                        <p>We believe that a space should adapt to the rhythm of its inhabitants. By blending functional geometry with soft organic lines, we create environments that encourage connection. Whether it's a quiet corner for morning coffee or a sprawling lounge for midnight laughter, the layout anticipates your life.</p>
+                    </div>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="images/residential/f06ebb6d-a021-4a66-9cb8-540f29caee5e.png" alt="Residential Interior 4">
+                    </div>
+                    <div class="story-content">
+                        <h3>A Lasting Embrace</h3>
+                        <p>Ultimately, a residential space is an embrace that lasts long after the door is locked. With precise lighting and meticulously curated artifacts, the room settles into a deep, comforting glow. Here, luxury isn't a showpiece—it's the profound peace you feel when you finally, truly, arrive home.</p>
+                        <a href="index.html#contact" class="btn btn-primary" style="margin-top: 24px;">Start Your Journey</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Simple Footer -->
+    <footer style="background-color: var(--clr-primary-dark); color: rgba(255,255,255,0.7); padding: 40px 24px; text-align: center;">
+        <p>&copy; 2026 HK Interior Designs. All Rights Reserved.</p>
+    </footer>
+</div>
+</body>
+</html>
