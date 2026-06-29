@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
     // Project Filtering Logic
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -76,7 +86,6 @@ ${message}`;
                     behavior: 'smooth'
                 });
             }
-        });
         });
     });
 

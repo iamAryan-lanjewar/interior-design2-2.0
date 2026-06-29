@@ -235,6 +235,9 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: 32px;
 }
+.mobile-menu-toggle {
+    display: none;
+}
 .top-nav-new a {
     color: var(--clr-text-light);
     font-size: 0.95rem;
@@ -274,7 +277,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-heading-new {
-    font-family: Georgia, 'Times New Roman', Times, serif; /* Rich browser font */
+    font-family: var(--font-heading);
     font-size: 4.8rem;
     color: var(--clr-text-light);
     line-height: 1.05;
@@ -961,6 +964,14 @@ h1, h2, h3, h4, h5, h6 {
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    /* New Hero & Philosophy Strip */
+    .hero-text-new {
+        max-width: 80%;
+    }
+    .philosophy-strip {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -971,7 +982,7 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
     .main-nav, .site-header .btn-outline {
-        display: none; /* Mobile nav would go here */
+        display: none;
     }
     
     .process-steps {
@@ -990,6 +1001,132 @@ h1, h2, h3, h4, h5, h6 {
     
     .footer-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* New Hero Section Mobile Fixes */
+    .new-hero {
+        height: 80vh;
+    }
+    .top-nav-new {
+        padding: 20px 5%;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .mobile-menu-toggle {
+        display: block;
+        font-size: 2rem;
+        color: var(--clr-text-light);
+        cursor: pointer;
+    }
+    .top-nav-new ul {
+        display: none; 
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding-top: 20px;
+        background: rgba(0,0,0,0.8);
+        border-radius: var(--radius-sm);
+        margin-top: 10px;
+        padding-bottom: 20px;
+    }
+    .top-nav-new ul.active {
+        display: flex;
+    }
+    .top-nav-new .btn-enquiry {
+        display: none;
+    }
+    
+    .mobile-hide {
+        display: none;
+    }
+    .hero-text-new {
+        max-width: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: none;
+        text-align: center;
+        padding: 18vh 20px 0 20px;
+        box-sizing: border-box;
+    }
+    .primary-heading-new {
+        font-family: var(--font-heading);
+        font-size: 3.6rem;
+        margin-bottom: 16px;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+    .sub-text-new {
+        font-size: 1rem;
+        max-width: 100%;
+        margin: 23px auto 24px auto;
+        text-align: left;
+    }
+    .hero-text-new .btn-dark {
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        z-index: 10;
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 14px 24px;
+        border-radius: var(--radius-full);
+        background-color: var(--clr-accent);
+        color: var(--clr-text-light);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    /* Philosophy Strip Mobile Fixes */
+    .philosophy-strip {
+        padding: 50px 5%;
+    }
+    .strip-heading {
+        font-size: 2.4rem;
+        text-align: center;
+    }
+    .strip-subheading {
+        justify-content: center;
+    }
+    .strip-features {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+    .strip-feat {
+        width: calc(50% - 16px);
+        flex-direction: column;
+        text-align: center;
+        background: #fff;
+        padding: 16px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+    }
+    .philosophy-strip-image {
+        flex-direction: column;
+    }
+    .strip-accent-box {
+        width: 100%;
+        padding: 30px;
+        flex-direction: row;
+        gap: 20px;
+        text-align: left;
+    }
+    .strip-accent-box .circle-diagram {
+        margin-bottom: 0;
+    }
+    
+    /* Other cleanups */
+    .section-title {
+        font-size: 2rem;
+    }
+    .resources-block, .form-block, .location-block {
+        padding: 30px 20px;
     }
 }
 
