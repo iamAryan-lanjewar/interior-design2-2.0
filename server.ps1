@@ -63,12 +63,15 @@ while ($listener.IsListening) {
                 Default { "application/octet-stream" }
             }
 
-            # Security Response Headers
+            # Security & Anti-Cache Response Headers
             $response.Headers.Add("X-Frame-Options", "SAMEORIGIN")
             $response.Headers.Add("X-Content-Type-Options", "nosniff")
             $response.Headers.Add("Referrer-Policy", "strict-origin-when-cross-origin")
             $response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https://images.unsplash.com https://maps.google.com https://maps.gstatic.com; frame-src 'self' https://maps.google.com https://www.google.com; connect-src 'self';")
             $response.Headers.Add("Permissions-Policy", "geolocation=(), camera=(), microphone=()")
+            $response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate")
+            $response.Headers.Add("Pragma", "no-cache")
+            $response.Headers.Add("Expires", "0")
 
             $response.ContentType = $contentType
             $response.ContentLength64 = $bytes.Length
