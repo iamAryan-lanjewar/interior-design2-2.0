@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK Interior | Instagram Carousel Posts</title>
+    <title>HK Interior | Design Guide</title>
     <link rel="preconnect" href="https://unpkg.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .carousel-page {
-            background-color: var(--clr-bg-light);
+            background-color: var(--clr-bg-light, #f8f6f3);
             min-height: 100vh;
-            padding: 60px 20px;
+            padding: 40px 20px 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         
         .carousel-header {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-align: center;
         }
 
@@ -28,26 +28,39 @@
             align-items: center;
             gap: 8px;
             font-weight: 500;
-            color: var(--clr-primary-dark);
-            margin-bottom: 24px;
+            color: var(--clr-primary-dark, #2c3e35);
+            margin-bottom: 16px;
+            text-decoration: none;
             transition: opacity 0.3s ease;
         }
         .back-link:hover {
             opacity: 0.7;
         }
 
+        .section-title {
+            font-size: 2rem;
+            color: var(--clr-primary-dark, #2c3e35);
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            color: var(--clr-text-muted, #777);
+            font-size: 0.95rem;
+        }
+
         .insta-container {
             width: 100%;
-            max-width: 600px;
-            background: var(--clr-bg-white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
+            max-width: 540px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(0,0,0,0.06);
         }
 
         .insta-header {
-            padding: 16px;
+            padding: 14px 16px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -57,12 +70,13 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: var(--clr-primary-dark);
-            color: var(--clr-text-light);
+            background-color: var(--clr-primary-dark, #2c3e35);
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: 0.9rem;
         }
         .insta-user-info {
             display: flex;
@@ -71,11 +85,11 @@
         .insta-username {
             font-weight: 600;
             font-size: 0.95rem;
-            color: var(--clr-text-main);
+            color: #222;
         }
         .insta-location {
             font-size: 0.8rem;
-            color: var(--clr-text-muted);
+            color: #888;
         }
 
         .carousel-wrapper {
@@ -83,22 +97,25 @@
             width: 100%;
             aspect-ratio: 1 / 1;
             overflow: hidden;
+            background-color: #f4f4f4;
+            cursor: pointer;
         }
 
         .carousel-track {
             display: flex;
             height: 100%;
+            width: 100%;
             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .carousel-slide {
             flex: 0 0 100%;
-            min-width: 100%;
+            width: 100%;
             height: 100%;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f0f0f0;
         }
         
         .carousel-slide img {
@@ -107,43 +124,47 @@
             object-fit: contain;
             user-select: none;
             -webkit-user-drag: none;
+            pointer-events: none;
         }
 
         .carousel-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
-            background: rgba(255,255,255,0.9);
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.92);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.18);
             border: none;
-            z-index: 25;
-            transition: background 0.3s ease, transform 0.2s ease;
+            z-index: 30;
+            transition: background 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
         }
         .carousel-nav:hover {
-            background: rgba(255,255,255,1);
-            transform: translateY(-50%) scale(1.05);
+            background: #ffffff;
+            transform: translateY(-50%) scale(1.08);
         }
-        .carousel-prev { left: 16px; }
-        .carousel-next { right: 16px; }
-        .carousel-nav i { font-size: 1.5rem; color: #333; }
+        .carousel-prev { left: 14px; }
+        .carousel-next { right: 14px; }
+        .carousel-nav i { font-size: 1.4rem; color: #222; }
         
-        .carousel-nav.hidden { display: none; }
+        .carousel-nav.hidden { 
+            opacity: 0;
+            pointer-events: none;
+        }
 
         .insta-actions {
-            padding: 16px;
+            padding: 14px 16px 10px;
             display: flex;
-            gap: 24px; /* Increased distance between icons */
+            gap: 20px;
         }
         .insta-actions i {
-            font-size: 1.8rem;
-            color: var(--clr-text-main);
+            font-size: 1.75rem;
+            color: #222;
             cursor: pointer;
             transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s;
         }
@@ -174,26 +195,29 @@
             display: flex;
             justify-content: center;
             gap: 6px;
-            margin-bottom: 16px;
+            padding-bottom: 12px;
         }
         .dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
             background-color: rgba(0,0,0,0.2);
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         .dot.active {
-            background-color: var(--clr-accent);
+            background-color: var(--clr-accent, #c9a96e);
+            transform: scale(1.2);
         }
 
         .insta-caption {
-            padding: 0 16px 24px;
-            font-size: 0.95rem;
+            padding: 0 16px 20px;
+            font-size: 0.92rem;
+            line-height: 1.4;
+            color: #333;
         }
-        .insta-caption strong { font-weight: 600; }
+        .insta-caption strong { font-weight: 600; color: #111; }
 
-        /* Hotspot for hand-drawn next arrow in slide 1 */
+        /* Hotspot overlays for Slide 1 */
         .slide-next-arrow-hotspot {
             position: absolute;
             bottom: 3.2%;
@@ -201,14 +225,10 @@
             width: 80px;
             height: 80px;
             cursor: pointer;
-            z-index: 20;
+            z-index: 25;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
         }
-        /* Removed red hotspot-pulse styling */
+
         .slide-swipe-hotspot {
             position: absolute;
             top: 35%;
@@ -216,7 +236,7 @@
             width: 110px;
             height: 110px;
             cursor: pointer;
-            z-index: 20;
+            z-index: 25;
             border-radius: 50%;
         }
     </style>
@@ -228,7 +248,7 @@
                 <i class="ph ph-arrow-left"></i> Back to Home
             </a>
             <h1 class="section-title">Design Guide</h1>
-            <p>Pastel Aesthetic Minimalist Guide</p>
+            <p class="section-subtitle">Pastel Aesthetic Minimalist Guide</p>
         </div>
 
         <div class="insta-container">
@@ -240,30 +260,30 @@
                 </div>
             </div>
 
-            <div class="carousel-wrapper">
+            <div class="carousel-wrapper" id="carouselWrapper">
                 <div class="carousel-track" id="track">
-                    <div class="carousel-slide" style="position: relative;">
-                        <img src="carousel_images/1.png" alt="Slide 1" draggable="false">
+                    <div class="carousel-slide">
+                        <img src="carousel_images/1.png" alt="Modular Kitchen Guide Slide 1" draggable="false">
                         <div class="slide-next-arrow-hotspot" id="slide1NextArrow" title="Next Slide"></div>
                         <div class="slide-swipe-hotspot" id="slide1SwipeBtn" title="Next Slide"></div>
                     </div>
-                    <div class="carousel-slide"><img src="carousel_images/2.png" alt="Slide 2" draggable="false"></div>
-                    <div class="carousel-slide"><img src="carousel_images/3.png" alt="Slide 3" draggable="false"></div>
-                    <div class="carousel-slide"><img src="carousel_images/4.png" alt="Slide 4" draggable="false"></div>
-                    <div class="carousel-slide"><img src="carousel_images/5.png" alt="Slide 5" draggable="false"></div>
-                    <div class="carousel-slide"><img src="carousel_images/6.png" alt="Slide 6" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/2.png" alt="Modular Kitchen Guide Slide 2" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/3.png" alt="Modular Kitchen Guide Slide 3" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/4.png" alt="Modular Kitchen Guide Slide 4" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/5.png" alt="Modular Kitchen Guide Slide 5" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/6.png" alt="Modular Kitchen Guide Slide 6" draggable="false"></div>
                 </div>
                 
-                <button class="carousel-nav carousel-prev hidden" id="btnPrev">
+                <button class="carousel-nav carousel-prev hidden" id="btnPrev" aria-label="Previous Slide">
                     <i class="ph ph-caret-left"></i>
                 </button>
-                <button class="carousel-nav carousel-next" id="btnNext">
+                <button class="carousel-nav carousel-next" id="btnNext" aria-label="Next Slide">
                     <i class="ph ph-caret-right"></i>
                 </button>
             </div>
 
             <div class="insta-actions">
-                <i class="ph ph-heart" id="likeBtn"></i>
+                <i class="ph ph-heart" id="likeBtn" title="Like Post"></i>
                 <i class="ph ph-paper-plane-tilt" id="shareBtn" title="Copy Website Link"></i>
             </div>
             
@@ -281,26 +301,30 @@
             </div>
         </div>
     </div>
+
     <script>
+        const wrapper = document.getElementById('carouselWrapper');
         const track = document.getElementById('track');
         const slides = Array.from(track.children);
         const btnPrev = document.getElementById('btnPrev');
         const btnNext = document.getElementById('btnNext');
         const dotsContainer = document.getElementById('dots');
         const dots = Array.from(dotsContainer.children);
-        const wrapper = document.querySelector('.carousel-wrapper');
         
         let currentIndex = 0;
 
-        function updateCarousel() {
-            // Ensure smooth swipe transition animation
-            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+        function updateCarousel(animated = true) {
+            if (animated) {
+                track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            } else {
+                track.style.transition = 'none';
+            }
             
-            // Move track by exactly 1 slide width (100% / slides.length of total track width)
-            const slidePercent = 100 / slides.length;
-            track.style.transform = `translateX(-${currentIndex * slidePercent}%)`;
+            const slideWidth = wrapper.clientWidth;
+            const translateX = -currentIndex * slideWidth;
+            track.style.transform = `translateX(${translateX}px)`;
             
-            // update buttons
+            // Navigation button visibility
             if (currentIndex === 0) {
                 btnPrev.classList.add('hidden');
             } else {
@@ -313,54 +337,57 @@
                 btnNext.classList.remove('hidden');
             }
             
-            // update dots
+            // Dot indicators update
             dots.forEach(dot => dot.classList.remove('active'));
             if (dots[currentIndex]) dots[currentIndex].classList.add('active');
         }
 
-        // 1. Next button caret click -> trigger next slide
-        btnNext.addEventListener('click', () => {
+        // 1. Next button caret click
+        btnNext.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (currentIndex < slides.length - 1) {
                 currentIndex++;
-                updateCarousel();
+                updateCarousel(true);
             }
         });
 
-        // 2. Prev button caret click -> trigger prev slide
-        btnPrev.addEventListener('click', () => {
+        // 2. Previous button caret click
+        btnPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (currentIndex > 0) {
                 currentIndex--;
-                updateCarousel();
+                updateCarousel(true);
             }
         });
-        
-        // 3. Hand-drawn arrow hotspot click -> trigger next slide
+
+        // 3. Hotspot clicks on Slide 1
         const slide1NextArrow = document.getElementById('slide1NextArrow');
         if (slide1NextArrow) {
             slide1NextArrow.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (currentIndex < slides.length - 1) {
                     currentIndex++;
-                    updateCarousel();
+                    updateCarousel(true);
                 }
             });
         }
-        
-        // 4. White circle swipe button hotspot click -> trigger next slide
+
         const slide1SwipeBtn = document.getElementById('slide1SwipeBtn');
         if (slide1SwipeBtn) {
             slide1SwipeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (currentIndex < slides.length - 1) {
                     currentIndex++;
-                    updateCarousel();
+                    updateCarousel(true);
                 }
             });
         }
 
-        // 5. Direct click on wrapper -> trigger next/prev based on click position
+        // 4. Wrapper click (Tap left half -> previous slide, Tap right half -> next slide)
         wrapper.addEventListener('click', (e) => {
-            if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+            if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav')) {
+                return;
+            }
 
             const rect = wrapper.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
@@ -368,48 +395,55 @@
             if (clickX > rect.width / 2) {
                 if (currentIndex < slides.length - 1) {
                     currentIndex++;
-                    updateCarousel();
+                    updateCarousel(true);
                 }
             } else {
                 if (currentIndex > 0) {
                     currentIndex--;
-                    updateCarousel();
+                    updateCarousel(true);
                 }
             }
         });
 
-        // 6. Touch swipe support for mobile
+        // 5. Mobile Touch Swipe
         let startX = 0;
         let currentX = 0;
+        let isSwiping = false;
 
-        track.addEventListener('touchstart', e => {
+        track.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
             currentX = startX;
+            isSwiping = true;
             track.style.transition = 'none';
-        }, {passive: true});
+        }, { passive: true });
 
-        track.addEventListener('touchmove', e => {
+        track.addEventListener('touchmove', (e) => {
+            if (!isSwiping) return;
             currentX = e.touches[0].clientX;
             const diffX = currentX - startX;
-            if (Math.abs(diffX) > 10) {
-                const slidePercent = 100 / slides.length;
-                const dragPercent = (diffX / track.offsetWidth) * 100;
-                track.style.transform = `translateX(-${currentIndex * slidePercent - dragPercent}%)`;
-            }
-        }, {passive: true});
+            const slideWidth = wrapper.clientWidth;
+            const currentTranslate = -currentIndex * slideWidth;
+            track.style.transform = `translateX(${currentTranslate + diffX}px)`;
+        }, { passive: true });
 
         track.addEventListener('touchend', () => {
-            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            if (!isSwiping) return;
+            isSwiping = false;
             const diffX = currentX - startX;
             if (diffX < -40) {
                 if (currentIndex < slides.length - 1) currentIndex++;
             } else if (diffX > 40) {
                 if (currentIndex > 0) currentIndex--;
             }
-            updateCarousel();
+            updateCarousel(true);
         });
-        
-        // Like button
+
+        // 6. Handle Window Resize dynamically
+        window.addEventListener('resize', () => {
+            updateCarousel(false);
+        });
+
+        // 7. Like Button Animation
         const likeBtn = document.getElementById('likeBtn');
         if (likeBtn) {
             likeBtn.addEventListener('click', () => {
@@ -417,23 +451,19 @@
                 likeBtn.classList.toggle('liked');
             });
         }
-        
-        // Share button
+
+        // 8. Share Button Link Copy
         const shareBtn = document.getElementById('shareBtn');
-        function fallbackCopyTextToClipboard(text) {
-            var textArea = document.createElement("textarea");
+        function copyUrlFallback(text) {
+            const textArea = document.createElement("textarea");
             textArea.value = text;
             textArea.style.position = "fixed";
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
             try {
-                var successful = document.execCommand('copy');
-                if (successful) {
-                    alert("Website link copied to clipboard!");
-                } else {
-                    alert("Failed to copy link.");
-                }
+                const ok = document.execCommand('copy');
+                alert(ok ? "Website link copied to clipboard!" : "Failed to copy link.");
             } catch (err) {
                 alert("Failed to copy link.");
             }
@@ -446,19 +476,22 @@
                 void shareBtn.offsetWidth;
                 shareBtn.classList.add('shared');
                 
-                const urlToShare = window.location.href;
-                if (!navigator.clipboard) {
-                    fallbackCopyTextToClipboard(urlToShare);
-                    return;
-                }
-                try {
-                    await navigator.clipboard.writeText(urlToShare);
-                    alert("Website link copied to clipboard!");
-                } catch (err) {
-                    fallbackCopyTextToClipboard(urlToShare);
+                const currentUrl = window.location.href;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    try {
+                        await navigator.clipboard.writeText(currentUrl);
+                        alert("Website link copied to clipboard!");
+                    } catch (err) {
+                        copyUrlFallback(currentUrl);
+                    }
+                } else {
+                    copyUrlFallback(currentUrl);
                 }
             });
         }
+
+        // Initial setup
+        updateCarousel(false);
     </script>
 </body>
 </html>
