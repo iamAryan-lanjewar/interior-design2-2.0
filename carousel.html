@@ -104,13 +104,12 @@
         .carousel-track {
             display: flex;
             height: 100%;
-            width: 100%;
+            width: 600%; /* 6 slides x 100% wrapper width */
             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .carousel-slide {
-            flex: 0 0 100%;
-            width: 100%;
+            width: 16.666667%; /* 100% / 6 slides */
             height: 100%;
             position: relative;
             display: flex;
@@ -320,9 +319,9 @@
                 track.style.transition = 'none';
             }
             
-            const slideWidth = wrapper.clientWidth;
-            const translateX = -currentIndex * slideWidth;
-            track.style.transform = `translateX(${translateX}px)`;
+            const stepPercent = 100 / slides.length;
+            const translateX = -currentIndex * stepPercent;
+            track.style.transform = `translateX(${translateX}%)`;
             
             // Navigation button visibility
             if (currentIndex === 0) {
@@ -421,9 +420,10 @@
             if (!isSwiping) return;
             currentX = e.touches[0].clientX;
             const diffX = currentX - startX;
-            const slideWidth = wrapper.clientWidth;
-            const currentTranslate = -currentIndex * slideWidth;
-            track.style.transform = `translateX(${currentTranslate + diffX}px)`;
+            const stepPercent = 100 / slides.length;
+            const dragPercent = (diffX / wrapper.clientWidth) * stepPercent;
+            const currentTranslate = -currentIndex * stepPercent;
+            track.style.transform = `translateX(${currentTranslate + dragPercent}%)`;
         }, { passive: true });
 
         track.addEventListener('touchend', () => {
