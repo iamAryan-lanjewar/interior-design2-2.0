@@ -275,6 +275,7 @@
         const btnNext = document.getElementById('btnNext');
         const dotsContainer = document.getElementById('dots');
         const dots = Array.from(dotsContainer.children);
+        const wrapper = document.querySelector('.carousel-wrapper');
         
         let currentIndex = 0;
 
@@ -383,7 +384,7 @@
                 if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
                     if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
                     
-                    const rect = track.getBoundingClientRect();
+                const rect = wrapper.getBoundingClientRect();
                     const clickX = e.changedTouches[0].clientX - rect.left;
                     if (clickX > rect.width / 2) {
                         if (currentIndex < slides.length - 1) {
@@ -435,7 +436,7 @@
             if (Math.abs(diffX) < 10) {
                 if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
                 
-                const rect = track.getBoundingClientRect();
+                const rect = wrapper.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 
                 if (clickX > rect.width / 2) {
