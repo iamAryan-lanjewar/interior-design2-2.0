@@ -206,6 +206,16 @@
             transition: all 0.3s ease;
         }
         /* Removed red hotspot-pulse styling */
+        .slide-swipe-hotspot {
+            position: absolute;
+            top: 35%;
+            right: 0.5%;
+            width: 110px;
+            height: 110px;
+            cursor: pointer;
+            z-index: 20;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -232,6 +242,7 @@
                     <div class="carousel-slide" style="position: relative;">
                         <img src="carousel_images/1.png" alt="Slide 1">
                         <div class="slide-next-arrow-hotspot" id="slide1NextArrow" title="Next Slide"></div>
+                        <div class="slide-swipe-hotspot" id="slide1SwipeBtn" title="Next Slide"></div>
                     </div>
                     <div class="carousel-slide"><img src="carousel_images/2.png" alt="Slide 2"></div>
                     <div class="carousel-slide"><img src="carousel_images/3.png" alt="Slide 3"></div>
@@ -326,6 +337,18 @@
             });
         }
         
+        // White circle swipe button click listener
+        const slide1SwipeBtn = document.getElementById('slide1SwipeBtn');
+        if (slide1SwipeBtn) {
+            slide1SwipeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+        }
+        
         // Unified Swipe and Drag Support (Touch & Mouse)
         let isDragging = false;
         let startX = 0;
@@ -382,7 +405,7 @@
                 const diffX = currentX - startX;
                 const diffY = e.changedTouches[0].clientY - startY;
                 if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
-                    if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+                    if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
                     
                 const rect = wrapper.getBoundingClientRect();
                     const clickX = e.changedTouches[0].clientX - rect.left;
@@ -407,7 +430,7 @@
         
         // Mouse events
         track.addEventListener('mousedown', e => {
-            if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+            if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
             isDragging = true;
             startX = e.clientX;
             currentX = startX;
@@ -434,7 +457,7 @@
             
             // Tap/click support on desktop
             if (Math.abs(diffX) < 10) {
-                if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+                if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
                 
                 const rect = wrapper.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
