@@ -104,6 +104,8 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
         .carousel-nav {
@@ -240,15 +242,15 @@
             <div class="carousel-wrapper">
                 <div class="carousel-track" id="track">
                     <div class="carousel-slide" style="position: relative;">
-                        <img src="carousel_images/1.png" alt="Slide 1">
+                        <img src="carousel_images/1.png" alt="Slide 1" draggable="false">
                         <div class="slide-next-arrow-hotspot" id="slide1NextArrow" title="Next Slide"></div>
                         <div class="slide-swipe-hotspot" id="slide1SwipeBtn" title="Next Slide"></div>
                     </div>
-                    <div class="carousel-slide"><img src="carousel_images/2.png" alt="Slide 2"></div>
-                    <div class="carousel-slide"><img src="carousel_images/3.png" alt="Slide 3"></div>
-                    <div class="carousel-slide"><img src="carousel_images/4.png" alt="Slide 4"></div>
-                    <div class="carousel-slide"><img src="carousel_images/5.png" alt="Slide 5"></div>
-                    <div class="carousel-slide"><img src="carousel_images/6.png" alt="Slide 6"></div>
+                    <div class="carousel-slide"><img src="carousel_images/2.png" alt="Slide 2" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/3.png" alt="Slide 3" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/4.png" alt="Slide 4" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/5.png" alt="Slide 5" draggable="false"></div>
+                    <div class="carousel-slide"><img src="carousel_images/6.png" alt="Slide 6" draggable="false"></div>
                 </div>
                 
                 <button class="carousel-nav carousel-prev hidden" id="btnPrev">
@@ -278,7 +280,6 @@
             </div>
         </div>
     </div>
-
     <script>
         const track = document.getElementById('track');
         const slides = Array.from(track.children);
@@ -291,7 +292,7 @@
         let currentIndex = 0;
 
         function updateCarousel() {
-            // Ensure smooth swipe transition animation when advancing
+            // Ensure smooth swipe transition animation
             track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
             
             // move track
@@ -312,9 +313,10 @@
             
             // update dots
             dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
+            if (dots[currentIndex]) dots[currentIndex].classList.add('active');
         }
 
+        // 1. Next button caret click -> trigger next slide
         btnNext.addEventListener('click', () => {
             if (currentIndex < slides.length - 1) {
                 currentIndex++;
@@ -322,6 +324,7 @@
             }
         });
 
+        // 2. Prev button caret click -> trigger prev slide
         btnPrev.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -329,7 +332,7 @@
             }
         });
         
-        // Hand-drawn arrow hotspot click listener
+        // 3. Hand-drawn arrow hotspot click -> trigger next slide
         const slide1NextArrow = document.getElementById('slide1NextArrow');
         if (slide1NextArrow) {
             slide1NextArrow.addEventListener('click', (e) => {
@@ -341,7 +344,7 @@
             });
         }
         
-        // White circle swipe button click listener
+        // 4. White circle swipe button hotspot click -> trigger next slide
         const slide1SwipeBtn = document.getElementById('slide1SwipeBtn');
         if (slide1SwipeBtn) {
             slide1SwipeBtn.addEventListener('click', (e) => {
@@ -352,142 +355,58 @@
                 }
             });
         }
-        
-        // Unified Swipe and Drag Support (Touch & Mouse)
-        let isDragging = false;
-        let startX = 0;
-        let startY = 0;
-        let currentX = 0;
-        let isHorizontalSwipe = false;
-        
-        // Touch events
-        track.addEventListener('touchstart', e => {
-            isDragging = true;
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            currentX = startX;
-            isHorizontalSwipe = false;
-            track.style.transition = 'none';
-        }, {passive: true});
-        
-        track.addEventListener('touchmove', e => {
-            if (!isDragging) return;
-            currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            
-            const diffX = currentX - startX;
-            const diffY = currentY - startY;
-            
-            // Detect if gesture is horizontal swipe
-            if (!isHorizontalSwipe && Math.abs(diffX) > 10 && Math.abs(diffX) > Math.abs(diffY)) {
-                isHorizontalSwipe = true;
-            }
-            
-            if (isHorizontalSwipe) {
-                if (e.cancelable) e.preventDefault();
-                const percentage = (diffX / track.offsetWidth) * 100;
-                const translate = -currentIndex * 100 + percentage;
-                track.style.transform = `translateX(${translate}%)`;
-            }
-        }, {passive: false});
-        
-        track.addEventListener('touchend', e => {
-            if (!isDragging) return;
-            isDragging = false;
-            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-            
-            // Only transition if it was a horizontal swipe to avoid single taps changing slides
-            if (isHorizontalSwipe) {
-                const diffX = currentX - startX;
-                if (diffX < -50) {
-                    if (currentIndex < slides.length - 1) currentIndex++;
-                } else if (diffX > 50) {
-                    if (currentIndex > 0) currentIndex--;
+
+        // 5. Direct click on wrapper -> trigger next/prev based on click position
+        wrapper.addEventListener('click', (e) => {
+            if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+
+            const rect = wrapper.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+
+            if (clickX > rect.width / 2) {
+                if (currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
                 }
             } else {
-                // Tap support on mobile: Tap right to go forward, left to go backward
-                const diffX = currentX - startX;
-                const diffY = e.changedTouches[0].clientY - startY;
-                if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
-                    if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
-                    
-                const rect = wrapper.getBoundingClientRect();
-                    const clickX = e.changedTouches[0].clientX - rect.left;
-                    if (clickX > rect.width / 2) {
-                        if (currentIndex < slides.length - 1) {
-                            currentIndex++;
-                            updateCarousel();
-                        }
-                    } else {
-                        if (currentIndex > 0) {
-                            currentIndex--;
-                            updateCarousel();
-                        }
-                    }
-                    return;
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
                 }
             }
-            updateCarousel();
         });
-        
-        // Mouse events
-        track.addEventListener('mousedown', e => {
-            if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
-            isDragging = true;
-            startX = e.clientX;
+
+        // 6. Touch swipe support for mobile
+        let startX = 0;
+        let currentX = 0;
+
+        track.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
             currentX = startX;
             track.style.transition = 'none';
-            track.style.cursor = 'grabbing';
-            e.preventDefault();
-        });
-        
-        track.addEventListener('mousemove', e => {
-            if (!isDragging) return;
-            currentX = e.clientX;
-            const diffX = currentX - startX;
-            const percentage = (diffX / track.offsetWidth) * 100;
-            const translate = -currentIndex * 100 + percentage;
-            track.style.transform = `translateX(${translate}%)`;
-        });
-        
-        window.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-            track.style.cursor = 'grab';
-            const diffX = currentX - startX;
-            
-            // Tap/click support on desktop
-            if (Math.abs(diffX) < 10) {
-                if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
-                
-                const rect = wrapper.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                
-                if (clickX > rect.width / 2) {
-                    if (currentIndex < slides.length - 1) {
-                        currentIndex++;
-                        updateCarousel();
-                    }
-                } else {
-                    if (currentIndex > 0) {
-                        currentIndex--;
-                        updateCarousel();
-                    }
-                }
-                return;
-            }
+        }, {passive: true});
 
-            if (diffX < -50) {
+        track.addEventListener('touchmove', e => {
+            currentX = e.touches[0].clientX;
+            const diffX = currentX - startX;
+            if (Math.abs(diffX) > 10) {
+                const percentage = (diffX / track.offsetWidth) * 100;
+                track.style.transform = `translateX(-${currentIndex * 100 - percentage}%)`;
+            }
+        }, {passive: true});
+
+        track.addEventListener('touchend', () => {
+            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            const diffX = currentX - startX;
+            if (diffX < -40) {
                 if (currentIndex < slides.length - 1) currentIndex++;
-            } else if (diffX > 50) {
+            } else if (diffX > 40) {
                 if (currentIndex > 0) currentIndex--;
             }
             updateCarousel();
         });
         
-        track.style.cursor = 'grab';
-        
+        // Like button
         const likeBtn = document.getElementById('likeBtn');
         if (likeBtn) {
             likeBtn.addEventListener('click', () => {
@@ -496,8 +415,8 @@
             });
         }
         
+        // Share button
         const shareBtn = document.getElementById('shareBtn');
-        
         function fallbackCopyTextToClipboard(text) {
             var textArea = document.createElement("textarea");
             textArea.value = text;
@@ -510,23 +429,21 @@
                 if (successful) {
                     alert("Website link copied to clipboard!");
                 } else {
-                    alert("Failed to copy link. (Try manually copying the URL)");
+                    alert("Failed to copy link.");
                 }
             } catch (err) {
-                alert("Failed to copy link. (Try manually copying the URL)");
+                alert("Failed to copy link.");
             }
             document.body.removeChild(textArea);
         }
 
         if (shareBtn) {
             shareBtn.addEventListener('click', async () => {
-                // Play animation
                 shareBtn.classList.remove('shared');
-                void shareBtn.offsetWidth; // trigger reflow
+                void shareBtn.offsetWidth;
                 shareBtn.classList.add('shared');
                 
                 const urlToShare = window.location.href;
-                
                 if (!navigator.clipboard) {
                     fallbackCopyTextToClipboard(urlToShare);
                     return;
