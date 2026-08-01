@@ -36,14 +36,22 @@
             opacity: 0.7;
         }
 
-        .insta-container {
+        .insta-feed {
             width: 100%;
             max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .insta-post {
+            width: 100%;
             background: var(--clr-bg-white);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-md);
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(0,0,0,0.08);
         }
 
         .insta-header {
@@ -228,276 +236,145 @@
             <p>Pastel Aesthetic Minimalist Guide</p>
         </div>
 
-        <div class="insta-container">
-            <div class="insta-header">
-                <div class="insta-avatar">HK</div>
-                <div class="insta-user-info">
-                    <span class="insta-username">hk.interiordesigns</span>
-                    <span class="insta-location">Nagpur, India</span>
-                </div>
-            </div>
-
-            <div class="carousel-wrapper">
-                <div class="carousel-track" id="track">
-                    <div class="carousel-slide" style="position: relative;">
-                        <img src="carousel_images/1.png" alt="Slide 1">
-                        <div class="slide-next-arrow-hotspot" id="slide1NextArrow" title="Next Slide"></div>
-                        <div class="slide-swipe-hotspot" id="slide1SwipeBtn" title="Next Slide"></div>
+        <div class="insta-feed">
+            <!-- POST 1: Modular Kitchen -->
+            <div class="insta-post" data-post-id="kitchen">
+                <div class="insta-header">
+                    <div class="insta-avatar">HK</div>
+                    <div class="insta-user-info">
+                        <span class="insta-username">hk.interiordesigns</span>
+                        <span class="insta-location">Nagpur, India</span>
                     </div>
-                    <div class="carousel-slide"><img src="carousel_images/2.png" alt="Slide 2"></div>
-                    <div class="carousel-slide"><img src="carousel_images/3.png" alt="Slide 3"></div>
-                    <div class="carousel-slide"><img src="carousel_images/4.png" alt="Slide 4"></div>
-                    <div class="carousel-slide"><img src="carousel_images/5.png" alt="Slide 5"></div>
-                    <div class="carousel-slide"><img src="carousel_images/6.png" alt="Slide 6"></div>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-slide" style="position: relative;">
+                            <img src="carousel_images/1.png" alt="Kitchen Guide Slide 1">
+                            <div class="slide-next-arrow-hotspot slide1-next-arrow" title="Next Slide"></div>
+                            <div class="slide-swipe-hotspot slide1-swipe-btn" title="Next Slide"></div>
+                        </div>
+                        <div class="carousel-slide"><img src="carousel_images/2.png" alt="Kitchen Guide Slide 2"></div>
+                        <div class="carousel-slide"><img src="carousel_images/3.png" alt="Kitchen Guide Slide 3"></div>
+                        <div class="carousel-slide"><img src="carousel_images/4.png" alt="Kitchen Guide Slide 4"></div>
+                        <div class="carousel-slide"><img src="carousel_images/5.png" alt="Kitchen Guide Slide 5"></div>
+                        <div class="carousel-slide"><img src="carousel_images/6.png" alt="Kitchen Guide Slide 6"></div>
+                    </div>
+                    
+                    <button class="carousel-nav carousel-prev hidden">
+                        <i class="ph ph-caret-left"></i>
+                    </button>
+                    <button class="carousel-nav carousel-next">
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+                </div>
+
+                <div class="insta-actions">
+                    <i class="ph ph-heart btn-like"></i>
+                    <i class="ph ph-paper-plane-tilt btn-share" title="Copy Website Link"></i>
                 </div>
                 
-                <button class="carousel-nav carousel-prev hidden" id="btnPrev">
-                    <i class="ph ph-caret-left"></i>
-                </button>
-                <button class="carousel-nav carousel-next" id="btnNext">
-                    <i class="ph ph-caret-right"></i>
-                </button>
+                <div class="insta-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <div class="insta-caption">
+                    <strong>hk.interiordesigns</strong> Check out our latest minimalist guide! Precision, Style, Perfection. ✨ #interiordesign #kitchen #nagpur
+                </div>
             </div>
 
-            <div class="insta-actions">
-                <i class="ph ph-heart" id="likeBtn"></i>
-                <i class="ph ph-paper-plane-tilt" id="shareBtn" title="Copy Website Link"></i>
-            </div>
-            
-            <div class="insta-dots" id="dots">
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+            <!-- POST 2: Living Room -->
+            <div class="insta-post" data-post-id="living-room">
+                <div class="insta-header">
+                    <div class="insta-avatar">HK</div>
+                    <div class="insta-user-info">
+                        <span class="insta-username">hk.interiordesigns</span>
+                        <span class="insta-location">Nagpur, India</span>
+                    </div>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="images/residential/3988673d-28e6-44ed-92f6-a970b7c38e7d.png" alt="Living Room Slide 1"></div>
+                        <div class="carousel-slide"><img src="images/residential/4da69396-a59b-4198-87ac-181dd7f4883a.png" alt="Living Room Slide 2"></div>
+                        <div class="carousel-slide"><img src="images/residential/85343e08-9230-43e6-b547-66889be3630d.png" alt="Living Room Slide 3"></div>
+                        <div class="carousel-slide"><img src="images/residential/f06ebb6d-a021-4a66-9cb8-540f29caee5e.png" alt="Living Room Slide 4"></div>
+                    </div>
+                    
+                    <button class="carousel-nav carousel-prev hidden">
+                        <i class="ph ph-caret-left"></i>
+                    </button>
+                    <button class="carousel-nav carousel-next">
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+                </div>
+
+                <div class="insta-actions">
+                    <i class="ph ph-heart btn-like"></i>
+                    <i class="ph ph-paper-plane-tilt btn-share" title="Copy Website Link"></i>
+                </div>
+                
+                <div class="insta-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <div class="insta-caption">
+                    <strong>hk.interiordesigns</strong> Luxury living rooms that feel like home. Warm neutrals, layered textures, and timeless design layout. 🛋️✨ #livingroom #decor #homedesign
+                </div>
             </div>
 
-            <div class="insta-caption">
-                <strong>hk.interiordesigns</strong> Check out our latest minimalist guide! Precision, Style, Perfection. ✨
+            <!-- POST 3: Bedroom & Details -->
+            <div class="insta-post" data-post-id="bedroom">
+                <div class="insta-header">
+                    <div class="insta-avatar">HK</div>
+                    <div class="insta-user-info">
+                        <span class="insta-username">hk.interiordesigns</span>
+                        <span class="insta-location">Nagpur, India</span>
+                    </div>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="images/project_bedroom_1782542622882.png" alt="Bedroom Slide 1"></div>
+                        <div class="carousel-slide"><img src="images/project_living_room_1782542599740.png" alt="Bedroom Slide 2"></div>
+                        <div class="carousel-slide"><img src="images/philosophy_vase_1782542636581.png" alt="Bedroom Slide 3"></div>
+                    </div>
+                    
+                    <button class="carousel-nav carousel-prev hidden">
+                        <i class="ph ph-caret-left"></i>
+                    </button>
+                    <button class="carousel-nav carousel-next">
+                        <i class="ph ph-caret-right"></i>
+                    </button>
+                </div>
+
+                <div class="insta-actions">
+                    <i class="ph ph-heart btn-like"></i>
+                    <i class="ph ph-paper-plane-tilt btn-share" title="Copy Website Link"></i>
+                </div>
+                
+                <div class="insta-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <div class="insta-caption">
+                    <strong>hk.interiordesigns</strong> Designing beautiful spaces that tell your story. conceled ambient lighting and natural wood grains. 🛌💫 #bedroom #interiors #modernliving
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        const track = document.getElementById('track');
-        const slides = Array.from(track.children);
-        const btnPrev = document.getElementById('btnPrev');
-        const btnNext = document.getElementById('btnNext');
-        const dotsContainer = document.getElementById('dots');
-        const dots = Array.from(dotsContainer.children);
-        const wrapper = document.querySelector('.carousel-wrapper');
-        
-        let currentIndex = 0;
-
-        function updateCarousel() {
-            // move track
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // update buttons
-            if (currentIndex === 0) {
-                btnPrev.classList.add('hidden');
-            } else {
-                btnPrev.classList.remove('hidden');
-            }
-            
-            // Always keep next button visible so it can act as "Next Page" link on last slide
-            btnNext.classList.remove('hidden');
-            
-            // update dots
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
-        }
-
-        btnNext.addEventListener('click', () => {
-            if (currentIndex < slides.length - 1) {
-                currentIndex++;
-                updateCarousel();
-            } else {
-                window.location.href = 'residential.html';
-            }
-        });
-
-        btnPrev.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
-        });
-        
-        // Hand-drawn arrow hotspot click listener
-        const slide1NextArrow = document.getElementById('slide1NextArrow');
-        if (slide1NextArrow) {
-            slide1NextArrow.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (currentIndex < slides.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            });
-        }
-        
-        // White circle swipe button click listener
-        const slide1SwipeBtn = document.getElementById('slide1SwipeBtn');
-        if (slide1SwipeBtn) {
-            slide1SwipeBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (currentIndex < slides.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            });
-        }
-        
-        // Unified Swipe and Drag Support (Touch & Mouse)
-        let isDragging = false;
-        let startX = 0;
-        let startY = 0;
-        let currentX = 0;
-        let isHorizontalSwipe = false;
-        
-        // Touch events
-        track.addEventListener('touchstart', e => {
-            isDragging = true;
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            currentX = startX;
-            isHorizontalSwipe = false;
-            track.style.transition = 'none';
-        }, {passive: true});
-        
-        track.addEventListener('touchmove', e => {
-            if (!isDragging) return;
-            currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            
-            const diffX = currentX - startX;
-            const diffY = currentY - startY;
-            
-            // Detect if gesture is horizontal swipe
-            if (!isHorizontalSwipe && Math.abs(diffX) > 10 && Math.abs(diffX) > Math.abs(diffY)) {
-                isHorizontalSwipe = true;
-            }
-            
-            if (isHorizontalSwipe) {
-                if (e.cancelable) e.preventDefault();
-                const percentage = (diffX / track.offsetWidth) * 100;
-                const translate = -currentIndex * 100 + percentage;
-                track.style.transform = `translateX(${translate}%)`;
-            }
-        }, {passive: false});
-        
-        track.addEventListener('touchend', e => {
-            if (!isDragging) return;
-            isDragging = false;
-            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-            
-            // Only transition if it was a horizontal swipe to avoid single taps changing slides
-            if (isHorizontalSwipe) {
-                const diffX = currentX - startX;
-                if (diffX < -50) {
-                    if (currentIndex < slides.length - 1) currentIndex++;
-                } else if (diffX > 50) {
-                    if (currentIndex > 0) currentIndex--;
-                }
-            } else {
-                // Tap support on mobile: Tap right to go forward, left to go backward
-                const diffX = currentX - startX;
-                const diffY = e.changedTouches[0].clientY - startY;
-                if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
-                    if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
-                    
-                const rect = wrapper.getBoundingClientRect();
-                    const clickX = e.changedTouches[0].clientX - rect.left;
-                    if (clickX > rect.width / 2) {
-                        if (currentIndex < slides.length - 1) {
-                            currentIndex++;
-                            updateCarousel();
-                        } else {
-                            window.location.href = 'residential.html';
-                        }
-                    } else {
-                        if (currentIndex > 0) {
-                            currentIndex--;
-                            updateCarousel();
-                        }
-                    }
-                    return;
-                }
-            }
-            updateCarousel();
-        });
-        
-        // Mouse events
-        track.addEventListener('mousedown', e => {
-            if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
-            isDragging = true;
-            startX = e.clientX;
-            currentX = startX;
-            track.style.transition = 'none';
-            track.style.cursor = 'grabbing';
-            e.preventDefault();
-        });
-        
-        track.addEventListener('mousemove', e => {
-            if (!isDragging) return;
-            currentX = e.clientX;
-            const diffX = currentX - startX;
-            const percentage = (diffX / track.offsetWidth) * 100;
-            const translate = -currentIndex * 100 + percentage;
-            track.style.transform = `translateX(${translate}%)`;
-        });
-        
-        window.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-            track.style.cursor = 'grab';
-            const diffX = currentX - startX;
-            
-            // Tap/click support on desktop
-            if (Math.abs(diffX) < 10) {
-                if (e.target.closest('#slide1NextArrow') || e.target.closest('#slide1SwipeBtn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
-                
-                const rect = wrapper.getBoundingClientRect();
-                const clickX = e.clientX - rect.left;
-                
-                if (clickX > rect.width / 2) {
-                    if (currentIndex < slides.length - 1) {
-                        currentIndex++;
-                        updateCarousel();
-                    } else {
-                        window.location.href = 'residential.html';
-                    }
-                } else {
-                    if (currentIndex > 0) {
-                        currentIndex--;
-                        updateCarousel();
-                    }
-                }
-                return;
-            }
-
-            if (diffX < -50) {
-                if (currentIndex < slides.length - 1) currentIndex++;
-            } else if (diffX > 50) {
-                if (currentIndex > 0) currentIndex--;
-            }
-            updateCarousel();
-        });
-        
-        track.style.cursor = 'grab';
-        
-        const likeBtn = document.getElementById('likeBtn');
-        if (likeBtn) {
-            likeBtn.addEventListener('click', () => {
-                likeBtn.classList.toggle('ph-fill');
-                likeBtn.classList.toggle('liked');
-            });
-        }
-        
-        const shareBtn = document.getElementById('shareBtn');
-        
         function fallbackCopyTextToClipboard(text) {
             var textArea = document.createElement("textarea");
             textArea.value = text;
@@ -518,27 +395,250 @@
             document.body.removeChild(textArea);
         }
 
-        if (shareBtn) {
-            shareBtn.addEventListener('click', async () => {
-                // Play animation
-                shareBtn.classList.remove('shared');
-                void shareBtn.offsetWidth; // trigger reflow
-                shareBtn.classList.add('shared');
+        document.querySelectorAll('.insta-post').forEach(post => {
+            const track = post.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const btnPrev = post.querySelector('.carousel-prev');
+            const btnNext = post.querySelector('.carousel-next');
+            const dotsContainer = post.querySelector('.insta-dots');
+            const dots = Array.from(dotsContainer.children);
+            const wrapper = post.querySelector('.carousel-wrapper');
+            
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                // move track
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
                 
-                const urlToShare = window.location.href;
+                // update buttons
+                if (currentIndex === 0) {
+                    if (btnPrev) btnPrev.classList.add('hidden');
+                } else {
+                    if (btnPrev) btnPrev.classList.remove('hidden');
+                }
                 
-                if (!navigator.clipboard) {
-                    fallbackCopyTextToClipboard(urlToShare);
+                // Always keep next button visible so it can act as "Next Page" link on last slide
+                if (btnNext) btnNext.classList.remove('hidden');
+                
+                // update dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+            }
+
+            if (btnNext) {
+                btnNext.addEventListener('click', () => {
+                    if (currentIndex < slides.length - 1) {
+                        currentIndex++;
+                        updateCarousel();
+                    } else {
+                        window.location.href = 'residential.html';
+                    }
+                });
+            }
+
+            if (btnPrev) {
+                btnPrev.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                });
+            }
+            
+            // Hand-drawn arrow hotspot click listener (Kitchen slide 1 only)
+            const slide1NextArrow = post.querySelector('.slide1-next-arrow');
+            if (slide1NextArrow) {
+                slide1NextArrow.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (currentIndex < slides.length - 1) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                });
+            }
+            
+            // White circle swipe button click listener (Kitchen slide 1 only)
+            const slide1SwipeBtn = post.querySelector('.slide1-swipe-btn');
+            if (slide1SwipeBtn) {
+                slide1SwipeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (currentIndex < slides.length - 1) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                });
+            }
+            
+            // Unified Swipe and Drag Support (Touch & Mouse)
+            let isDragging = false;
+            let startX = 0;
+            let startY = 0;
+            let currentX = 0;
+            let isHorizontalSwipe = false;
+            
+            // Touch events
+            track.addEventListener('touchstart', e => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                currentX = startX;
+                isHorizontalSwipe = false;
+                track.style.transition = 'none';
+            }, {passive: true});
+            
+            track.addEventListener('touchmove', e => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                
+                const diffX = currentX - startX;
+                const diffY = currentY - startY;
+                
+                // Detect if gesture is horizontal swipe
+                if (!isHorizontalSwipe && Math.abs(diffX) > 10 && Math.abs(diffX) > Math.abs(diffY)) {
+                    isHorizontalSwipe = true;
+                }
+                
+                if (isHorizontalSwipe) {
+                    if (e.cancelable) e.preventDefault();
+                    const percentage = (diffX / track.offsetWidth) * 100;
+                    const translate = -currentIndex * 100 + percentage;
+                    track.style.transform = `translateX(${translate}%)`;
+                }
+            }, {passive: false});
+            
+            track.addEventListener('touchend', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                
+                // Only transition if it was a horizontal swipe to avoid single taps changing slides
+                if (isHorizontalSwipe) {
+                    const diffX = currentX - startX;
+                    if (diffX < -50) {
+                        if (currentIndex < slides.length - 1) currentIndex++;
+                    } else if (diffX > 50) {
+                        if (currentIndex > 0) currentIndex--;
+                    }
+                } else {
+                    // Tap support on mobile: Tap right to go forward, left to go backward
+                    const diffX = currentX - startX;
+                    const diffY = e.changedTouches[0].clientY - startY;
+                    if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
+                        if (e.target.closest('.slide1-next-arrow') || e.target.closest('.slide1-swipe-btn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+                        
+                        const rect = wrapper.getBoundingClientRect();
+                        const clickX = e.changedTouches[0].clientX - rect.left;
+                        if (clickX > rect.width / 2) {
+                            if (currentIndex < slides.length - 1) {
+                                currentIndex++;
+                                updateCarousel();
+                            } else {
+                                window.location.href = 'residential.html';
+                            }
+                        } else {
+                            if (currentIndex > 0) {
+                                currentIndex--;
+                                updateCarousel();
+                            }
+                        }
+                        return;
+                    }
+                }
+                updateCarousel();
+            });
+            
+            // Mouse events
+            track.addEventListener('mousedown', e => {
+                if (e.target.closest('.slide1-next-arrow') || e.target.closest('.slide1-swipe-btn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+                isDragging = true;
+                startX = e.clientX;
+                currentX = startX;
+                track.style.transition = 'none';
+                track.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+            
+            track.addEventListener('mousemove', e => {
+                if (!isDragging) return;
+                currentX = e.clientX;
+                const diffX = currentX - startX;
+                const percentage = (diffX / track.offsetWidth) * 100;
+                const translate = -currentIndex * 100 + percentage;
+                track.style.transform = `translateX(${translate}%)`;
+            });
+            
+            window.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                track.style.cursor = 'grab';
+                const diffX = currentX - startX;
+                
+                // Tap/click support on desktop
+                if (Math.abs(diffX) < 10) {
+                    if (e.target.closest('.slide1-next-arrow') || e.target.closest('.slide1-swipe-btn') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+                    
+                    const rect = wrapper.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    
+                    if (clickX > rect.width / 2) {
+                        if (currentIndex < slides.length - 1) {
+                            currentIndex++;
+                            updateCarousel();
+                        } else {
+                            window.location.href = 'residential.html';
+                        }
+                    } else {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateCarousel();
+                        }
+                    }
                     return;
                 }
-                try {
-                    await navigator.clipboard.writeText(urlToShare);
-                    alert("Website link copied to clipboard!");
-                } catch (err) {
-                    fallbackCopyTextToClipboard(urlToShare);
+
+                if (diffX < -50) {
+                    if (currentIndex < slides.length - 1) currentIndex++;
+                } else if (diffX > 50) {
+                    if (currentIndex > 0) currentIndex--;
                 }
+                updateCarousel();
             });
-        }
+            
+            track.style.cursor = 'grab';
+            
+            const likeBtn = post.querySelector('.btn-like');
+            if (likeBtn) {
+                likeBtn.addEventListener('click', () => {
+                    likeBtn.classList.toggle('ph-fill');
+                    likeBtn.classList.toggle('liked');
+                });
+            }
+            
+            const shareBtn = post.querySelector('.btn-share');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', async () => {
+                    // Play animation
+                    shareBtn.classList.remove('shared');
+                    void shareBtn.offsetWidth; // trigger reflow
+                    shareBtn.classList.add('shared');
+                    
+                    const urlToShare = window.location.href;
+                    
+                    if (!navigator.clipboard) {
+                        fallbackCopyTextToClipboard(urlToShare);
+                        return;
+                    }
+                    try {
+                        await navigator.clipboard.writeText(urlToShare);
+                        alert("Website link copied to clipboard!");
+                    } catch (err) {
+                        fallbackCopyTextToClipboard(urlToShare);
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
