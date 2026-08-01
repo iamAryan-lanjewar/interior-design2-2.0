@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Residential Design | Unique Interior Designs</title>
-    <!-- Google Fonts -->
+    <title>Residential Design | HK Interior</title>
+    <!-- Google Fonts & External CDN Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -55,13 +59,51 @@
             color: var(--clr-text-muted);
             margin-bottom: 16px;
         }
+        .residential-hero-title {
+            font-size: 3.5rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-bottom: 48px;
+            }
+            .story-grid:nth-child(even) {
+                direction: ltr;
+            }
+            .story-image {
+                height: 300px;
+            }
+            .story-content {
+                padding: 12px 0;
+                text-align: center;
+            }
+            .story-content h3 {
+                font-size: 1.8rem;
+                margin-bottom: 16px;
+            }
+            .story-content p {
+                font-size: 1rem;
+                text-align: left;
+            }
+            .residential-hero-title {
+                font-size: 2.2rem !important;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="layout-wrapper">
     <!-- Top Nav -->
     <nav class="top-nav-new" style="position: relative; background-color: var(--clr-primary-dark); padding: 20px 5%;">
-        <ul>
+        <!-- Hamburger menu icon for mobile -->
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="ph ph-list"></i>
+        </div>
+        
+        <ul id="nav-links">
             <li><a href="index.html#projects">Projects</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#services">Services</a></li>
@@ -75,7 +117,7 @@
         <!-- Hero Title -->
         <section style="background-color: var(--clr-primary-dark); color: var(--clr-text-light); padding: 80px 24px; text-align: center;">
             <span class="section-over-title text-light" style="color: var(--clr-accent)!important;">RESIDENTIAL SPACES</span>
-            <h1 style="font-size: 3.5rem; color: var(--clr-text-light); margin-top: 16px;">A Symphony of Living</h1>
+            <h1 class="residential-hero-title" style="color: var(--clr-text-light); margin-top: 16px;">A Symphony of Living</h1>
         </section>
 
         <!-- Narrative Section -->
@@ -84,7 +126,7 @@
                 
                 <div class="story-grid">
                     <div class="story-image">
-                        <img src="images/residential/3988673d-28e6-44ed-92f6-a970b7c38e7d.png" alt="Residential Interior 1">
+                        <img src="images/residential/3988673d-28e6-44ed-92f6-a970b7c38e7d.png" alt="Residential Interior 1" loading="lazy">
                     </div>
                     <div class="story-content">
                         <h3>The Awakening of Space</h3>
@@ -94,7 +136,7 @@
 
                 <div class="story-grid">
                     <div class="story-image">
-                        <img src="images/residential/4da69396-a59b-4198-87ac-181dd7f4883a.png" alt="Residential Interior 2">
+                        <img src="images/residential/4da69396-a59b-4198-87ac-181dd7f4883a.png" alt="Residential Interior 2" loading="lazy">
                     </div>
                     <div class="story-content">
                         <h3>Textures that Tell Tales</h3>
@@ -104,7 +146,7 @@
 
                 <div class="story-grid">
                     <div class="story-image">
-                        <img src="images/residential/85343e08-9230-43e6-b547-66889be3630d.png" alt="Residential Interior 3">
+                        <img src="images/residential/85343e08-9230-43e6-b547-66889be3630d.png" alt="Residential Interior 3" loading="lazy">
                     </div>
                     <div class="story-content">
                         <h3>The Heartbeat of Home</h3>
@@ -114,7 +156,7 @@
 
                 <div class="story-grid">
                     <div class="story-image">
-                        <img src="images/residential/f06ebb6d-a021-4a66-9cb8-540f29caee5e.png" alt="Residential Interior 4">
+                        <img src="images/residential/f06ebb6d-a021-4a66-9cb8-540f29caee5e.png" alt="Residential Interior 4" loading="lazy">
                     </div>
                     <div class="story-content">
                         <h3>A Lasting Embrace</h3>
@@ -130,8 +172,11 @@
 
     <!-- Simple Footer -->
     <footer style="background-color: var(--clr-primary-dark); color: rgba(255,255,255,0.7); padding: 40px 24px; text-align: center;">
-        <p>&copy; 2026 Unique Interior Designs. All Rights Reserved.</p>
+        <p>&copy; 2026 HK Interior. All Rights Reserved.</p>
     </footer>
+    
+    <!-- Custom Script -->
+    <script src="script.js?v=5"></script>
 </div>
 </body>
 </html>

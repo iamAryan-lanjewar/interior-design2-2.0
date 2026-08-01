@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unique Interior Designs | Instagram Carousel Posts</title>
+    <title>HK Interior | Instagram Carousel Posts</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="stylesheet" href="style.css?v=2">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -108,25 +110,26 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.8);
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             border: none;
-            z-index: 10;
-            transition: background 0.3s ease;
+            z-index: 25;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
         .carousel-nav:hover {
             background: rgba(255,255,255,1);
+            transform: translateY(-50%) scale(1.05);
         }
         .carousel-prev { left: 16px; }
         .carousel-next { right: 16px; }
-        .carousel-nav i { font-size: 1.2rem; color: #333; }
+        .carousel-nav i { font-size: 1.5rem; color: #333; }
         
         .carousel-nav.hidden { display: none; }
 
@@ -186,6 +189,52 @@
             font-size: 0.95rem;
         }
         .insta-caption strong { font-weight: 600; }
+
+        /* Hotspot for hand-drawn next arrow in slide 1 */
+        .slide-next-arrow-hotspot {
+            position: absolute;
+            bottom: 3.2%;
+            right: 0.8%;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            z-index: 20;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .hotspot-pulse {
+            width: 40px;
+            height: 40px;
+            border: 2.5px solid var(--clr-accent);
+            border-radius: 50%;
+            background-color: rgba(178, 77, 56, 0.15);
+            animation: pulse-ring 1.8s infinite ease-in-out;
+            pointer-events: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        .slide-next-arrow-hotspot:hover .hotspot-pulse {
+            background-color: rgba(178, 77, 56, 0.35);
+            transform: scale(1.15);
+            border-color: var(--clr-accent-hover);
+        }
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.85);
+                box-shadow: 0 0 0 0 rgba(178, 77, 56, 0.4);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 12px rgba(178, 77, 56, 0);
+            }
+            100% {
+                transform: scale(0.85);
+                box-shadow: 0 0 0 0 rgba(178, 77, 56, 0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -200,16 +249,21 @@
 
         <div class="insta-container">
             <div class="insta-header">
-                <div class="insta-avatar">UI</div>
+                <div class="insta-avatar">HK</div>
                 <div class="insta-user-info">
-                    <span class="insta-username">unique.interiordesigns</span>
+                    <span class="insta-username">hk.interiordesigns</span>
                     <span class="insta-location">Nagpur, India</span>
                 </div>
             </div>
 
             <div class="carousel-wrapper">
                 <div class="carousel-track" id="track">
-                    <div class="carousel-slide"><img src="carousel_images/1.png" alt="Slide 1"></div>
+                    <div class="carousel-slide" style="position: relative;">
+                        <img src="carousel_images/1.png" alt="Slide 1">
+                        <div class="slide-next-arrow-hotspot" id="slide1NextArrow" title="Next Slide">
+                            <div class="hotspot-pulse"></div>
+                        </div>
+                    </div>
                     <div class="carousel-slide"><img src="carousel_images/2.png" alt="Slide 2"></div>
                     <div class="carousel-slide"><img src="carousel_images/3.png" alt="Slide 3"></div>
                     <div class="carousel-slide"><img src="carousel_images/4.png" alt="Slide 4"></div>
@@ -240,7 +294,7 @@
             </div>
 
             <div class="insta-caption">
-                <strong>unique.interiordesigns</strong> Check out our latest minimalist guide! Precision, Style, Perfection. ✨
+                <strong>hk.interiordesigns</strong> Check out our latest minimalist guide! Precision, Style, Perfection. ✨
             </div>
         </div>
     </div>
@@ -291,35 +345,108 @@
             }
         });
         
-        // Add swipe support for mobile
-        let touchstartX = 0;
-        let touchendX = 0;
-        
-        track.addEventListener('touchstart', e => {
-            touchstartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-        
-        track.addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {passive: true});
-        
-        function handleSwipe() {
-            if (touchendX < touchstartX - 40) {
-                // Swipe left -> next slide
+        // Hand-drawn arrow hotspot click listener
+        const slide1NextArrow = document.getElementById('slide1NextArrow');
+        if (slide1NextArrow) {
+            slide1NextArrow.addEventListener('click', (e) => {
+                e.stopPropagation();
                 if (currentIndex < slides.length - 1) {
                     currentIndex++;
                     updateCarousel();
                 }
+            });
+        }
+        
+        // Unified Swipe and Drag Support (Touch & Mouse)
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let currentX = 0;
+        let isHorizontalSwipe = false;
+        
+        // Touch events
+        track.addEventListener('touchstart', e => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            currentX = startX;
+            isHorizontalSwipe = false;
+            track.style.transition = 'none';
+        }, {passive: true});
+        
+        track.addEventListener('touchmove', e => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            
+            const diffX = currentX - startX;
+            const diffY = currentY - startY;
+            
+            // Detect if gesture is horizontal swipe
+            if (!isHorizontalSwipe && Math.abs(diffX) > 10 && Math.abs(diffX) > Math.abs(diffY)) {
+                isHorizontalSwipe = true;
             }
-            if (touchendX > touchstartX + 40) {
-                // Swipe right -> prev slide
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
+            
+            if (isHorizontalSwipe) {
+                if (e.cancelable) e.preventDefault();
+                const percentage = (diffX / track.offsetWidth) * 100;
+                const translate = -currentIndex * 100 + percentage;
+                track.style.transform = `translateX(${translate}%)`;
+            }
+        }, {passive: false});
+        
+        track.addEventListener('touchend', e => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            
+            // Only transition if it was a horizontal swipe to avoid single taps changing slides
+            if (isHorizontalSwipe) {
+                const diffX = currentX - startX;
+                if (diffX < -50) {
+                    if (currentIndex < slides.length - 1) currentIndex++;
+                } else if (diffX > 50) {
+                    if (currentIndex > 0) currentIndex--;
                 }
             }
-        }
+            updateCarousel();
+        });
+        
+        // Mouse events
+        track.addEventListener('mousedown', e => {
+            if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav')) return;
+            isDragging = true;
+            startX = e.clientX;
+            currentX = startX;
+            track.style.transition = 'none';
+            track.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+        
+        track.addEventListener('mousemove', e => {
+            if (!isDragging) return;
+            currentX = e.clientX;
+            const diffX = currentX - startX;
+            const percentage = (diffX / track.offsetWidth) * 100;
+            const translate = -currentIndex * 100 + percentage;
+            track.style.transform = `translateX(${translate}%)`;
+        });
+        
+        window.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            track.style.cursor = 'grab';
+            const diffX = currentX - startX;
+            if (diffX < -50) {
+                if (currentIndex < slides.length - 1) currentIndex++;
+            } else if (diffX > 50) {
+                if (currentIndex > 0) currentIndex--;
+            }
+            updateCarousel();
+        });
+        
+        track.style.cursor = 'grab';
         
         const likeBtn = document.getElementById('likeBtn');
         if (likeBtn) {

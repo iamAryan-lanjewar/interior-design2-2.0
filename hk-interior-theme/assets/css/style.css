@@ -267,42 +267,33 @@ h1, h2, h3, h4, h5, h6 {
 .hero-text-new {
     pointer-events: auto;
     position: absolute;
-    top: 45%;
+    top: 52%;
     left: 8%;
     transform: translateY(-50%);
-    max-width: 50%;
+    max-width: 620px;
+    width: 100%;
+    z-index: 10;
 }
 
 .primary-heading-new {
-    font-family: Georgia, 'Times New Roman', Times, serif; /* Rich browser font */
-    font-size: 4.8rem;
-    color: var(--clr-text-light);
-    line-height: 1.05;
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    color: #ffffff;
+    line-height: 1.1;
     margin-bottom: 24px;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .sub-text-new {
-    color: rgba(255,255,255,0.8);
-    font-size: 1.05rem;
-    margin-bottom: 40px;
-    line-height: 1.6;
-    max-width: 80%;
-}
-
-.hero-text-new .btn-dark {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: 18px 36px;
-    border-radius: var(--radius-full);
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    transition: background-color 0.3s ease;
-}
-.hero-text-new .btn-dark:hover {
-    background-color: #333;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 0;
+    max-width: 560px;
+    font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.35);
 }
 
 /* ==========================================================================

@@ -51,24 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const date = document.getElementById('form-date').value || 'Not specified';
             const message = document.getElementById('form-message').value || 'No message provided';
             
-            // Format Email Message
-            const emailAddress = 'instictt20@gmail.com';
-            const emailSubject = `New Consultation Request from ${name}`;
-            const emailBody = `Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Service: ${service}
-Budget Range: ${budget}
-Preferred Date: ${date}
+            // Format WhatsApp Message
+            const whatsappNumber = '919823577149';
+            const text = `Hello! I would like to book a free consultation. Here are my details:
 
-Message:
+*Name:* ${name}
+*Phone:* ${phone}
+*Email:* ${email}
+*Service:* ${service}
+*Budget Range:* ${budget}
+*Preferred Date:* ${date}
+
+*Message:*
 ${message}`;
 
-            // Create Gmail Compose URL and redirect
-            // This ensures it works reliably in the browser without needing a local email app configured
-            const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            // Create WhatsApp Link and redirect
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
             
-            window.open(gmailURL, '_blank');
+            window.open(whatsappURL, '_blank');
             form.reset();
         });
     }
@@ -97,6 +97,21 @@ ${message}`;
             setTimeout(() => {
                 this.classList.remove('blinking');
             }, 1200);
+        });
+    });
+
+    // Make entire project cards clickable
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
+            const link = card.querySelector('.project-link');
+            if (link) {
+                const href = link.getAttribute('href');
+                if (href && href !== '#') {
+                    window.location.href = href;
+                }
+            }
         });
     });
 });
