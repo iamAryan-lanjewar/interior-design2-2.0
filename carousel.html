@@ -92,6 +92,7 @@
         }
 
         .carousel-slide {
+            flex: 0 0 100%;
             min-width: 100%;
             height: 100%;
             display: flex;
@@ -295,8 +296,9 @@
             // Ensure smooth swipe transition animation
             track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
             
-            // move track
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            // Move track by exactly 1 slide width (100% / slides.length of total track width)
+            const slidePercent = 100 / slides.length;
+            track.style.transform = `translateX(-${currentIndex * slidePercent}%)`;
             
             // update buttons
             if (currentIndex === 0) {
@@ -390,8 +392,9 @@
             currentX = e.touches[0].clientX;
             const diffX = currentX - startX;
             if (Math.abs(diffX) > 10) {
-                const percentage = (diffX / track.offsetWidth) * 100;
-                track.style.transform = `translateX(-${currentIndex * 100 - percentage}%)`;
+                const slidePercent = 100 / slides.length;
+                const dragPercent = (diffX / track.offsetWidth) * 100;
+                track.style.transform = `translateX(-${currentIndex * slidePercent - dragPercent}%)`;
             }
         }, {passive: true});
 
