@@ -205,36 +205,7 @@
             justify-content: center;
             transition: all 0.3s ease;
         }
-        .hotspot-pulse {
-            width: 40px;
-            height: 40px;
-            border: 2.5px solid var(--clr-accent);
-            border-radius: 50%;
-            background-color: rgba(178, 77, 56, 0.15);
-            animation: pulse-ring 1.8s infinite ease-in-out;
-            pointer-events: none;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-        .slide-next-arrow-hotspot:hover .hotspot-pulse {
-            background-color: rgba(178, 77, 56, 0.35);
-            transform: scale(1.15);
-            border-color: var(--clr-accent-hover);
-        }
-        @keyframes pulse-ring {
-            0% {
-                transform: scale(0.85);
-                box-shadow: 0 0 0 0 rgba(178, 77, 56, 0.4);
-            }
-            70% {
-                transform: scale(1.1);
-                box-shadow: 0 0 0 12px rgba(178, 77, 56, 0);
-            }
-            100% {
-                transform: scale(0.85);
-                box-shadow: 0 0 0 0 rgba(178, 77, 56, 0);
-            }
-        }
+        /* Removed red hotspot-pulse styling */
     </style>
 </head>
 <body>
@@ -260,9 +231,7 @@
                 <div class="carousel-track" id="track">
                     <div class="carousel-slide" style="position: relative;">
                         <img src="carousel_images/1.png" alt="Slide 1">
-                        <div class="slide-next-arrow-hotspot" id="slide1NextArrow" title="Next Slide">
-                            <div class="hotspot-pulse"></div>
-                        </div>
+                        <div class="slide-next-arrow-hotspot" id="slide1NextArrow" title="Next Slide"></div>
                     </div>
                     <div class="carousel-slide"><img src="carousel_images/2.png" alt="Slide 2"></div>
                     <div class="carousel-slide"><img src="carousel_images/3.png" alt="Slide 3"></div>
@@ -320,11 +289,8 @@
                 btnPrev.classList.remove('hidden');
             }
             
-            if (currentIndex === slides.length - 1) {
-                btnNext.classList.add('hidden');
-            } else {
-                btnNext.classList.remove('hidden');
-            }
+            // Always keep next button visible so it can act as "Next Page" link on last slide
+            btnNext.classList.remove('hidden');
             
             // update dots
             dots.forEach(dot => dot.classList.remove('active'));
@@ -335,6 +301,8 @@
             if (currentIndex < slides.length - 1) {
                 currentIndex++;
                 updateCarousel();
+            } else {
+                window.location.href = 'residential.html';
             }
         });
 
@@ -408,13 +376,37 @@
                 } else if (diffX > 50) {
                     if (currentIndex > 0) currentIndex--;
                 }
+            } else {
+                // Tap support on mobile: Tap right to go forward, left to go backward
+                const diffX = currentX - startX;
+                const diffY = e.changedTouches[0].clientY - startY;
+                if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
+                    if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+                    
+                    const rect = track.getBoundingClientRect();
+                    const clickX = e.changedTouches[0].clientX - rect.left;
+                    if (clickX > rect.width / 2) {
+                        if (currentIndex < slides.length - 1) {
+                            currentIndex++;
+                            updateCarousel();
+                        } else {
+                            window.location.href = 'residential.html';
+                        }
+                    } else {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateCarousel();
+                        }
+                    }
+                    return;
+                }
             }
             updateCarousel();
         });
         
         // Mouse events
         track.addEventListener('mousedown', e => {
-            if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav')) return;
+            if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
             isDragging = true;
             startX = e.clientX;
             currentX = startX;
@@ -432,12 +424,36 @@
             track.style.transform = `translateX(${translate}%)`;
         });
         
-        window.addEventListener('mouseup', () => {
+        window.addEventListener('mouseup', (e) => {
             if (!isDragging) return;
             isDragging = false;
             track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
             track.style.cursor = 'grab';
             const diffX = currentX - startX;
+            
+            // Tap/click support on desktop
+            if (Math.abs(diffX) < 10) {
+                if (e.target.closest('#slide1NextArrow') || e.target.closest('.carousel-nav') || e.target.closest('.insta-actions') || e.target.closest('.insta-dots')) return;
+                
+                const rect = track.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                
+                if (clickX > rect.width / 2) {
+                    if (currentIndex < slides.length - 1) {
+                        currentIndex++;
+                        updateCarousel();
+                    } else {
+                        window.location.href = 'residential.html';
+                    }
+                } else {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                }
+                return;
+            }
+
             if (diffX < -50) {
                 if (currentIndex < slides.length - 1) currentIndex++;
             } else if (diffX > 50) {
