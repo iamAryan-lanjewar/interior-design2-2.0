@@ -1,5 +1,5 @@
 ================================================================================
-PRODUCTIVE COPY DECK: HK INTERIOR WEBSITE CONTENT
+PRODUCTIVE COPY DECK: CREATIVE HUBS WEBSITE CONTENT
 ================================================================================
 PROJECTED DESIGN REFERENCE: image_601e0a.jpg
 TARGET ROLE: Top 1% Senior Conversion Copywriter & Brand Strategist
@@ -14,7 +14,7 @@ SECTION 1: GLOBAL HEADER & NAVIGATION ARRAY
 --------------------------------------------------------------------------------
 [PLACEMENT: Top Fixed Navigation Bar]
 
-* Brand Logo Text: HK Interior
+* Brand Logo Text: Creative Hubs
 * Navigation Menu Elements:
     - Home
     - About Studio
@@ -33,7 +33,7 @@ SECTION 2: HERO BACKGROUND & VALUE PROPOSITION
 [PLACEMENT: Above-The-Fold / Main Hero Section]
 
 * Super-Headline (Brand Identifier): 
-    HK INTERIOR
+    CREATIVE HUBS
 
 * Primary Headline: 
     Designing Beautiful Spaces That Feel Like Home.
@@ -146,7 +146,7 @@ SECTION 6: SOCIAL PROOF & VALIDATION
 
 --- TESTIMONIAL 1 ---
 * Rating: ★★★★★
-* Quote: "HK Interior completely transformed our flat into a beautiful, 
+* Quote: "Creative Hubs completely transformed our flat into a beautiful, 
           functional space. Highly professional team!"
 * Client Name: Pooja Deshmukh
 * Location: Nagpur
@@ -172,7 +172,7 @@ SECTION 7: TRUST FACTOR MATRIX
 [PLACEMENT: Grid Matrix Below Testimonials]
 
 * Section Over-Title: WHY CHOOSE US
-* Section Main Title: HK INTERIOR?
+* Section Main Title: CREATIVE HUBS?
 
 * Core Value Vectors:
     - Personalized Designs: Tailored perfectly to match your individual narrative.
@@ -225,20 +225,20 @@ SECTION 9: GEOGRAPHIC LOCATION & FOOTER
 * Label: FIND US
 * Headline: Visit Our Studio
 * Physical Postal Address: 
-    HK Interior, Shree Sai Apartment, Rajashree Nagar, Beltarodi Road, 
+    Creative Hubs, Shree Sai Apartment, Rajashree Nagar, Beltarodi Road, 
     Nagpur, Maharashtra 440027
 * Interactive Action Link: "Open in Google Maps →"
 
 === REVENUE COMPONENT FOOTER ===
 * Columns Grid Layout:
-    - Column 1: Brand Statement (HK Interior: Creating timeless interiors...)
+    - Column 1: Brand Statement (Creative Hubs: Creating timeless interiors...)
     - Column 2 [Quick Links]: Home, About Us, Services, Projects, Blog, Contact
     - Column 3 [Our Services]: Residential Interior, Commercial Interior, Modular Kitchen, Bedroom Design, Living Room Design, Turnkey Solutions
     - Column 4 [Useful Links]: Privacy Policy, Terms & Conditions, FAQs, Careers
     - Column 5 [Contact Info]:
         Phone: 09561377769
-        Email: info@hkinteriordesigns.com
+        Email: info@creativehubs.com
         Hours: Mon - Sat: 10:00 AM - 7:00 PM (Sunday Closed)
 
-* Copyright Footer: © 2026 HK Interior. All Rights Reserved.
+* Copyright Footer: © 2026 Creative Hubs. All Rights Reserved.
 ================================================================================
