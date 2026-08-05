@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Residential Design | Asha Interiors</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPMCNHT3J1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DPMCNHT3J1');
+    </script>
+
     <!-- Google Fonts & External CDN Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +25,7 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=999">
     <style>
         .story-section {
             padding: var(--section-pad-y) 0;
@@ -97,17 +107,18 @@
 <body>
 <div class="layout-wrapper">
     <!-- Top Nav -->
-    <nav class="top-nav-new" style="position: relative; background-color: var(--clr-primary-dark); padding: 20px 5%;">
+    <nav class="top-nav-new" id="main-nav" style="position: relative; background-color: var(--clr-primary-dark); padding: 20px 5%;">
+        <a href="index.html" class="nav-brand"><i class="ph-fill ph-house-line"></i> ASHA <span>INTERIORS</span></a>
+
         <!-- Hamburger menu icon for mobile -->
         <div class="mobile-menu-toggle" id="mobile-menu-toggle">
             <i class="ph ph-list"></i>
         </div>
         
         <ul id="nav-links">
+            <li><a href="index.html">Home</a></li>
             <li><a href="index.html#projects">Projects</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#calculator">Cost Estimator</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <a href="index.html#contact" class="btn-enquiry" style="border-color: rgba(255,255,255,0.2);">Enquiry &rarr;</a>

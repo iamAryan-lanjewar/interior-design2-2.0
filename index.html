@@ -6,6 +6,16 @@
     <title>Asha Interiors | Luxury Residential & Commercial Interiors</title>
     <meta name="description" content="We create timeless, functional, and inspiring interiors. Best interior designers in Nagpur for luxury residential, turnkey solutions, and modular kitchens.">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPMCNHT3J1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DPMCNHT3J1');
+    </script>
+    
     <!-- Google Fonts & External CDN Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +29,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style.css?v=999">
 </head>
 <body>
 <div class="layout-wrapper">
@@ -36,33 +46,61 @@
             <!-- Overlay for text readability -->
             <div class="hero-overlay"></div>
             
-            <nav class="top-nav-new">
+            <nav class="top-nav-new" id="main-nav">
+                <a href="#" class="nav-brand"><i class="ph-fill ph-house-line"></i> ASHA <span>INTERIORS</span></a>
+
                 <!-- Hamburger menu icon for mobile -->
                 <div class="mobile-menu-toggle" id="mobile-menu-toggle">
                     <i class="ph ph-list"></i>
                 </div>
                 
                 <ul id="nav-links">
+                    <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#footer">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#calculator">Cost Estimator</a></li>
+                    <li><a href="#transformation">Before & After</a></li>
+                    <li><a href="#faq">FAQs</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <a href="#contact" class="btn-enquiry">Enquiry &rarr;</a>
+                <a href="#contact" class="btn-enquiry">Free Enquiry &rarr;</a>
             </nav>
 
             <div class="hero-content-new">
                 <div class="hero-text-new">
                     <h1 class="primary-heading-new">Asha Interiors</h1>
                     <p class="sub-text-new">
-                        We create timeless, functional and inspiring interiors that reflect your personality and elevate the way you live, work and experience every space.
+                        Crafting bespoke, functional, and inspiring luxury interiors in Nagpur. Turning architectural blueprints into timeless living sanctuaries.
                     </p>
+                    
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">Explore Projects &rarr;</a>
+                        <a href="#calculator" class="btn btn-outline-light"><i class="ph ph-calculator" style="margin-right: 8px;"></i> Estimate Interior Cost</a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-num">150<span>+</span></div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">10<span>+</span></div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">100<span>%</span></div>
+                            <div class="stat-label">On-Time Delivery</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">4.9<span>★</span></div>
+                            <div class="stat-label">Client Rating</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- PHILOSOPHY / CONFIGURATOR STRIP -->
-        <section class="philosophy-strip">
+        <section id="about" class="philosophy-strip">
             <div class="philosophy-strip-content">
                 <h2 class="strip-heading">Design That Tells Your Story</h2>
                 <div class="strip-subheading">OUR PHILOSOPHY <span class="line"></span></div>
@@ -101,10 +139,155 @@
                     </div>
                     <p>Precision. Style.<br>Perfection.</p>
                 </a>
+        </section>
+
+        <!-- SECTION: INTERACTIVE COST ESTIMATOR -->
+        <section id="calculator" class="calculator-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-over-title">INSTANT BUDGET ESTIMATOR</span>
+                    <h2 class="section-title">Calculate Your Interior Design Cost</h2>
+                    <div class="title-divider"></div>
+                    <p style="max-width: 640px; margin: 0 auto 40px; color: var(--clr-text-muted);">
+                        Select your space requirements below to get a real-time transparent cost estimate for your home or commercial project in Nagpur.
+                    </p>
+                </div>
+
+                <div class="calc-wrapper">
+                    <div class="calc-inputs">
+                        <!-- Property Type -->
+                        <div class="calc-group">
+                            <div class="calc-group-title"><i class="ph ph-house"></i> 1. Select Property Type</div>
+                            <div class="calc-options-grid" id="calc-prop-grid">
+                                <div class="calc-card active" data-type="prop" data-value="2bhk" data-label="2 BHK Flat" data-base="450000">
+                                    <i class="ph ph-buildings"></i>
+                                    <span>2 BHK Flat</span>
+                                </div>
+                                <div class="calc-card" data-type="prop" data-value="3bhk" data-label="3 BHK Flat" data-base="650000">
+                                    <i class="ph ph-house-line"></i>
+                                    <span>3 BHK Flat</span>
+                                </div>
+                                <div class="calc-card" data-type="prop" data-value="villa" data-label="Villa / Duplex" data-base="1100000">
+                                    <i class="ph ph-castle-turret"></i>
+                                    <span>Villa / Duplex</span>
+                                </div>
+                                <div class="calc-card" data-type="prop" data-value="commercial" data-label="Office / Retail" data-base="550000">
+                                    <i class="ph ph-storefront"></i>
+                                    <span>Office / Retail</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scope -->
+                        <div class="calc-group">
+                            <div class="calc-group-title"><i class="ph ph-stack"></i> 2. Scope of Work</div>
+                            <div class="calc-options-grid" id="calc-scope-grid">
+                                <div class="calc-card active" data-type="scope" data-label="Full Turnkey Home" data-mult="1.0">
+                                    <i class="ph ph-key"></i>
+                                    <span>Full Turnkey Home</span>
+                                </div>
+                                <div class="calc-card" data-type="scope" data-label="Modular Kitchen Only" data-mult="0.4">
+                                    <i class="ph ph-cooking-pot"></i>
+                                    <span>Modular Kitchen Only</span>
+                                </div>
+                                <div class="calc-card" data-type="scope" data-label="Living & Dining" data-mult="0.55">
+                                    <i class="ph ph-armchair"></i>
+                                    <span>Living & Dining</span>
+                                </div>
+                                <div class="calc-card" data-type="scope" data-label="Bedrooms & Wardrobes" data-mult="0.45">
+                                    <i class="ph ph-bed"></i>
+                                    <span>Bedrooms & Wardrobes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Finish Level -->
+                        <div class="calc-group">
+                            <div class="calc-group-title"><i class="ph ph-sparkle"></i> 3. Material & Finish Level</div>
+                            <div class="calc-options-grid" id="calc-finish-grid">
+                                <div class="calc-card" data-type="finish" data-label="Essential Standard" data-mult="0.85">
+                                    <i class="ph ph-wrench"></i>
+                                    <span>Essential / Standard</span>
+                                </div>
+                                <div class="calc-card active" data-type="finish" data-label="Premium Quality" data-mult="1.0">
+                                    <i class="ph ph-star"></i>
+                                    <span>Premium Quality</span>
+                                </div>
+                                <div class="calc-card" data-type="finish" data-label="Ultra Luxury" data-mult="1.35">
+                                    <i class="ph ph-crown"></i>
+                                    <span>Ultra Luxury</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carpet Area Slider -->
+                        <div class="calc-group">
+                            <div class="calc-group-title" style="justify-content: space-between;">
+                                <span><i class="ph ph-ruler"></i> 4. Carpet Area (Sq. Ft.)</span>
+                                <span class="range-val" id="area-val-display">1,100 Sq.Ft.</span>
+                            </div>
+                            <div class="range-slider-wrapper">
+                                <input type="range" min="400" max="3500" step="50" value="1100" class="range-slider" id="calc-area-slider">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result Panel -->
+                    <div class="calc-result-card">
+                        <div>
+                            <span class="result-header">Estimated Investment</span>
+                            <div class="result-price" id="calc-total-price">₹ 6,50,000 - ₹ 7,80,000</div>
+                            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5;">*Includes 3D design renders, woodwork, hardware, lighting, painting & site execution.</p>
+                            
+                            <ul class="result-breakdown">
+                                <li><span>Property Type:</span> <strong id="summary-prop">2 BHK Flat</strong></li>
+                                <li><span>Scope:</span> <strong id="summary-scope">Full Turnkey Home</strong></li>
+                                <li><span>Package:</span> <strong id="summary-package">Premium Quality</strong></li>
+                                <li><span>Est. Timeline:</span> <strong id="summary-time">45 - 60 Days</strong></li>
+                            </ul>
+                        </div>
+
+                        <button id="calc-send-wa" class="btn btn-primary btn-full" style="margin-top: 20px;">
+                            Get Exact Quote via WhatsApp &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: BEFORE & AFTER TRANSFORMATION SLIDER -->
+        <section id="transformation" class="ba-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-over-title">TRANSFORMATION GALLERY</span>
+                    <h2 class="section-title">Before & After Interior Mastery</h2>
+                    <div class="title-divider"></div>
+                    <p style="max-width: 640px; margin: 0 auto 40px; color: var(--clr-text-muted);">
+                        Drag the slider horizontally to witness how we transform empty shell spaces into luxurious, functional living environments.
+                    </p>
+                </div>
+
+                <div class="ba-wrapper" id="ba-slider-container">
+                    <!-- Before Image (Base) -->
+                    <img src="images/spatial_chair_window.jpg" alt="Before Interior Renovation" class="ba-img">
+                    <span class="ba-badge before">Before Renovation</span>
+
+                    <!-- After Image (Clipped Overlay) -->
+                    <div class="ba-after-container" id="ba-after-box">
+                        <img src="images/project_living_room_1782542599740.png" alt="After Luxury Interior Design">
+                        <span class="ba-badge after">After Asha Interiors</span>
+                    </div>
+
+                    <!-- Divider Drag Handle -->
+                    <div class="ba-handle" id="ba-handle-line">
+                        <div class="ba-handle-btn"><i class="ph ph-caret-left-right"></i></div>
+                    </div>
+                </div>
             </div>
         </section>
 
     <!-- SECTION 3: FEATURED PORTFOLIO showcase -->
+    <div id="portfolio"></div>
     <section id="projects" class="featured-projects">
         <div class="container">
             <div class="section-header text-center">
@@ -226,7 +409,7 @@
     </section>
 
     <!-- SECTION 7: TRUST FACTOR MATRIX -->
-    <section class="why-choose-us">
+    <section id="services" class="why-choose-us">
         <div class="container">
             <span class="section-over-title">WHY CHOOSE</span>
             <h2 class="section-title">ASHA INTERIORS?</h2>
@@ -276,7 +459,7 @@
                             <i class="ph ph-book-open" style="font-size:1.5rem; color:#b7412e;"></i>
                             <span style="font-weight:500; color:#333;">Interior Design Budget Planner (PDF)</span>
                         </div>
-                        <a href="CreativeHubs_Interior_Designer_Budget_Guide.pdf" download class="io-btn-download" title="Download"></a>
+                        <a href="Asha_Interiors_Budget_Guide.pdf" download class="io-btn-download" title="Download"></a>
                     </div>
 
                     <!-- Resource 2 -->
@@ -285,7 +468,7 @@
                             <i class="ph ph-clipboard-text" style="font-size:1.5rem; color:#b7412e;"></i>
                             <span style="font-weight:500; color:#333;">Home Renovation Checklist (PDF)</span>
                         </div>
-                        <a href="CreativeHubs_MiddleClass_Renovation_Guide.pdf" download class="io-btn-download" title="Download"></a>
+                        <a href="Asha_Interiors_MiddleClass_Renovation_Guide.pdf" download class="io-btn-download" title="Download"></a>
                     </div>
 
                     <!-- Resource 3 -->
@@ -346,7 +529,7 @@
                 <h3 class="subsection-title">Visit Our Studio</h3>
                 <div class="address-card">
                     <i class="ph ph-map-pin"></i>
-                    <p>Shop no.15, Swapnashilp Apartment,<br>Beltarodi Rd, opp. Tajashri Honda Showroom,<br>Besa, Besa Pipla, Maharashtra 440037</p>
+                    <p>Shop no.15, Swapnashilp Apartment,<br>Beltarodi Rd, opposite Tajashri Honda Showroom,<br>Besa, Besa Pipla, Maharashtra 440037</p>
                 </div>
                 <div class="creative-map-wrapper">
                     <iframe 
@@ -358,6 +541,69 @@
                     </iframe>
                 </div>
                 <a href="https://www.google.com/maps/search/?api=1&query=Shop+no.15,+Swapnashilp+Apartment,+Beltarodi+Rd,+opposite+Tajashri+honda+showroom,+Besa,+Besa+Pipla,+Maharashtra+440037" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm btn-full">Open in Google Maps &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FREQUENTLY ASKED QUESTIONS -->
+    <section id="faq" class="faq-section">
+        <div class="container faq-container">
+            <div class="section-header text-center">
+                <span class="section-over-title">HAVE QUESTIONS?</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is your typical interior design timeline for a 2BHK/3BHK?</span>
+                        <i class="ph ph-caret-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most residential projects take between 45 to 60 working days from design sign-off to final handover. Modular kitchens and partial room renovations can be executed in 30-40 days.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you provide 3D visual renders before execution starts?</span>
+                        <i class="ph ph-caret-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We provide photorealistic 3D visual walkthroughs and renders for every room so you can visualize materials, lighting, layout, and color tones before work begins.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How is payment structured throughout the project?</span>
+                        <i class="ph ph-caret-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We work on a transparent milestone-based schedule: 10% booking token, 40% after design 3D approval & material selection, 40% upon factory production dispatch, and the remaining 10% upon final installation handover.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What warranty do you offer on woodwork and hardware?</span>
+                        <i class="ph ph-caret-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We provide a 10-Year Warranty on factory-finished modular cabinets and hardware (Hettich/Blum/Hafele). Additionally, we offer 1-year free post-handover maintenance service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you handle full turnkey civil and electrical work?</span>
+                        <i class="ph ph-caret-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. We provide end-to-end turnkey services covering false ceiling, electrical rewiring, plumbing, tiling, painting, custom furniture fabrication, and soft furnishings.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -383,23 +629,23 @@
                 <h4 class="footer-heading">Quick Links</h4>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#calculator">Cost Estimator</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             
             <div class="footer-col links-col">
                 <h4 class="footer-heading">Our Services</h4>
                 <ul>
-                    <li><a href="#">Residential Interior</a></li>
-                    <li><a href="#">Commercial Interior</a></li>
-                    <li><a href="#">Modular Kitchen</a></li>
-                    <li><a href="#">Bedroom Design</a></li>
-                    <li><a href="#">Living Room Design</a></li>
-                    <li><a href="#">Turnkey Solutions</a></li>
+                    <li><a href="residential.html">Residential Interior</a></li>
+                    <li><a href="#projects">Commercial Interior</a></li>
+                    <li><a href="carousel.html">Modular Kitchen</a></li>
+                    <li><a href="#projects">Bedroom Design</a></li>
+                    <li><a href="#projects">Living Room Design</a></li>
+                    <li><a href="#projects">Turnkey Solutions</a></li>
                 </ul>
             </div>
             
@@ -408,7 +654,7 @@
                 <ul>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#faq">FAQs</a></li>
                     <li><a href="#">Careers</a></li>
                 </ul>
             </div>
@@ -427,8 +673,75 @@
         </div>
     </footer>
 
-    <!-- Custom Script (cache busted) -->
-    <script src="script.js?v=5"></script>
+    <!-- PROJECT QUICK VIEW MODAL DIALOG -->
+    <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <img id="modal-img" src="images/warm_living_room.jpg" alt="Project View" class="modal-img">
+                <div class="modal-info">
+                    <span id="modal-tag" class="modal-tag">Residential</span>
+                    <h3 id="modal-title" class="modal-title">Project Title</h3>
+                    <p id="modal-desc" class="modal-desc">Project Description</p>
+                    <ul class="modal-specs">
+                        <li><span>Location:</span> <strong id="modal-loc">Nagpur</strong></li>
+                        <li><span>Turnaround:</span> <strong id="modal-time">45 Days</strong></li>
+                        <li><span>Services:</span> <strong id="modal-service">Full Interior</strong></li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-full modal-contact-btn">Book Consultation For Space &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="toast-msg">
+        <i class="ph ph-check-circle" style="font-size: 1.4rem; color: var(--clr-accent);"></i>
+        <span id="toast-text">Action completed successfully</span>
+    </div>
+
+    <!-- Schema.org Structured Data for Local Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "InteriorDesignStudio",
+      "name": "Asha Interiors",
+      "image": "images/hero_sofa_image_1782542548819.png",
+      "telephone": "09561377769",
+      "email": "info@ashainteriors.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Shop no.15, Swapnashilp Apartment, Beltarodi Rd, opposite Tajashri Honda Showroom",
+        "addressLocality": "Besa, Nagpur",
+        "addressRegion": "Maharashtra",
+        "postalCode": "440037",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 21.0825,
+        "longitude": 79.0882
+      },
+      "url": "https://ashainteriors.com",
+      "priceRange": "₹₹₹",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "10:00",
+        "closes": "19:00"
+      }
+    }
+    </script>
+
+    <!-- Custom Script -->
+    <script src="script.js?v=6"></script>
     </main>
 </div>
 </body>

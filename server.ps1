@@ -67,7 +67,7 @@ while ($listener.IsListening) {
             $response.Headers.Add("X-Frame-Options", "SAMEORIGIN")
             $response.Headers.Add("X-Content-Type-Options", "nosniff")
             $response.Headers.Add("Referrer-Policy", "strict-origin-when-cross-origin")
-            $response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https://images.unsplash.com https://maps.google.com https://maps.gstatic.com; frame-src 'self' https://maps.google.com https://www.google.com; connect-src 'self';")
+            $response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https://images.unsplash.com https://maps.google.com https://maps.gstatic.com https://www.google-analytics.com https://*.doubleclick.net; frame-src 'self' https://maps.google.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com;")
             $response.Headers.Add("Permissions-Policy", "geolocation=(), camera=(), microphone=()")
             $response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate")
             $response.Headers.Add("Pragma", "no-cache")
@@ -82,7 +82,7 @@ while ($listener.IsListening) {
             $response.Headers.Add("X-Frame-Options", "SAMEORIGIN")
             $response.Headers.Add("X-Content-Type-Options", "nosniff")
             $response.Headers.Add("Referrer-Policy", "strict-origin-when-cross-origin")
-            $response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https://images.unsplash.com https://maps.google.com https://maps.gstatic.com; frame-src 'self' https://maps.google.com https://www.google.com; connect-src 'self';")
+            $response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https://images.unsplash.com https://maps.google.com https://maps.gstatic.com https://www.google-analytics.com https://*.doubleclick.net; frame-src 'self' https://maps.google.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com;")
             $response.Headers.Add("Permissions-Policy", "geolocation=(), camera=(), microphone=()")
 
             $response.StatusCode = 404
